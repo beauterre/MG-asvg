@@ -9,6 +9,7 @@ if(typeof(ASVG)=="undefined")
     playing: true, // this allows the loop to stop
     start: function ()
     {
+      console.log("MG-ASVG v 2022-05-23-14-22")
       this.playing=true;
       // analyse the document, find asvg´s
       this.timelines=[];
@@ -29,7 +30,10 @@ if(typeof(ASVG)=="undefined")
           let fps=25;
           if(timeline[t].hasAttribute("fps"))
               fps=Number(timeline[t].getAttribute("fps"));
-          this.timelines.push({dom: timeline[t],frames:fr,fps: fps,current:0,ot: Date.now()});
+          let playback="looping";
+          if(timeline[t].hasAttribute("playback"))
+              playback=timeline[t].getAttribute("playback");
+          this.timelines.push({dom: timeline[t],f:fr,fps: fps,cf:0,ot: Date.now(), playback:playback});
         }
       }
       console.log("ASVG- "+this.timelines.length+" timelines initiated");
@@ -42,13 +46,25 @@ if(typeof(ASVG)=="undefined")
       for(t=0;t<this.timelines.length;t++)
       {
         let timeline=this.timelines[t];
+        timeline.f[timeline.cf].style="display:none"; // remove the OLD frame
         let ms=Date.now()-this.ot;
         let invfps=1000/timeline.fps;
         let frame=Math.floor(ms/invfps);
-        timeline.frames[timeline.current].style="display:none";
-        frame=frame%timeline.frames.length;
-        timeline.frames[frame].style="";
-        timeline.current=frame; // all set for next one.
+        switch(timeline.playback)
+        {
+          case "pingpong":
+            frame=frame%(timeline.f.length*2-1);
+            if(frame>timeline.f.length-1)
+            {
+              frame=(timeline.f.length*2-frame-1)%timeline.f.length;
+            }
+          break;
+          default:
+            frame=frame%timeline.f.length;
+        }
+//        timeline.dom.setAttribute("currentFrame",frame);
+        timeline.f[frame].style="";
+        timeline.cf=frame; // all set for next one.
 //        console.log("current time: "+frame);
       }
       window.requestAnimationFrame(this.animate.bind(this));
