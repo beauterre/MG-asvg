@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+  <title>MG-ASVG player demo by Hjalmar Snoep</title>
+  <link rel="stylesheet" type="text/css" href="demo.css" media="all" />
+</head>
+<body>
+  <div class="container">
+  <div id="menu"></div>
+  <div id="demo">
+  		<svg viewBox="0 0 1920 1080" animated="true" width="1920" height="1080" style="width: 100%; height: 100%;">
+  		  <defs>
+      		  <g id="nestable" class="asvg-timeline" playback="pingpong" fps="19" style="display: none;">
+      		    <g>
+          		  <circle cx="500" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="600" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="700" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="800" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="900" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="1000" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="1100" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="1200" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="1300" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		    <g>
+          		  <circle cx="1400" cy="400" r="62" fill="#000"></circle>
+      		    </g>
+      		  </g>
+  		  </defs>
+  		  <rect x="0" y="0" width="1920" height="1080" fill="#eee"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=400 font-size="35">Timeline 1, rotating the nested timeline at 5fps</text>
+      	<text x=20 y=540 font-size="35">Timeline 2, bounce at 19fps</text>
+  		  <g id="the-rotator" class="asvg-timeline" fps="5" style="display: none;">
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-180,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-170,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-160,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-150,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-140,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-130,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-120,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-110,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-100,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-90,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-80,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-70,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-60,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-50,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-40,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-30,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-20,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(-10,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(0,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(10,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(20,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(30,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(40,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(50,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(60,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(70,960,540)"/>
+  		    </g>
+  		    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(80,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(90,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(100,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(110,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(120,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(130,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(140,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(150,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(160,960,540)"/>
+  		    </g>
+  			    <g>
+      		  <use x="0" y="0" href="#nestable" transform="rotate(170,960,540)"/>
+  		    </g>
+
+  		  </g>
+  		</svg>
+  	</div>
+  	</div>
+  <script src="../js/MG-ASVG.js"></script>
+  <script src="demos.js"></script>
+</body>
+</html>
+
