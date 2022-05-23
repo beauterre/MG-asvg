@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <title>MG-ASVG player demo by Hjalmar Snoep</title>
+  <link rel="stylesheet" type="text/css" href="demo.css" media="all" />
+</head>
+<body>
+  <div class="container">
+  <div id="menu"></div>
+  <div id="demo">
+       <p> These buttons will animate on pointerover.</p>
+       
+       
+       <a href="" id="button1" style="display: inline-block;">
+  		<svg viewBox="0 0 200 200" animated="true" width="200" height="200">
+  		  <rect x="0" y="0" width="200" height="200" fill="#eee"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=40 font-size="35">BUTTON 1</text>
+  		  <g class="asvg-timeline" playback="mouseover" loop="true" target="button1" fps="5" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="40"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  		</a>
+  		
+  		<hr>
+  		
+  		
+       <a href="" id="button2" style="display: inline-block;">
+  		<svg viewBox="0 0 200 200" animated="true" width="200" height="200">
+  		  <rect x="0" y="0" width="200" height="200" fill="#fee"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=40 font-size="35">BUTTON 2</text>
+  		  <g class="asvg-timeline" playback="mouseover" loop="true" target="button2" fps="20" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="40"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="10"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  		</a>
+  		
+  		
+  	</div>
+  	</div>
+  <script src="MG-ASVG.js"></script>
+  <script src="demos.js"></script>
+</body>
+</html>
+

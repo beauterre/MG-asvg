@@ -28,12 +28,34 @@ if(typeof(ASVG)=="undefined")
           }
           timeline[t].style="";
           let fps=25;
+          let now=Date.now();
+          let playing=true;
           if(timeline[t].hasAttribute("fps"))
               fps=Number(timeline[t].getAttribute("fps"));
           let playback="looping";
           if(timeline[t].hasAttribute("playback"))
               playback=timeline[t].getAttribute("playback");
-          this.timelines.push({dom: timeline[t],f:fr,fps: fps,cf:0,ot: Date.now(), playback:playback});
+          if(playback == "mouseover")
+          {
+            // we need to add a listener to the target!
+            let target=timeline[t].getAttribute("target");
+            var target_dom=document.getElementById(target);
+            if(target_dom==null)
+            {
+              console.log("couldn`t find target: "+target);
+            }else
+            {
+              playing=false;
+            }
+            
+          }
+          this.timelines.push({dom: timeline[t],f:fr,fps: fps,cf:0,ot: now, playback:playback, playing: playing});
+          if(target_dom!==null)
+          {
+              target_dom.addEventListener("pointerover",this.mouseEvent.bind(this));
+              target_dom.addEventListener("pointerout",this.mouseEvent.bind(this));
+              target_dom.setAttribute("timeline",this.timelines.length-1);
+          }
         }
       }
       console.log("ASVG- "+this.timelines.length+" timelines initiated");
@@ -49,9 +71,17 @@ if(typeof(ASVG)=="undefined")
         timeline.f[timeline.cf].style="display:none"; // remove the OLD frame
         let ms=Date.now()-this.ot;
         let invfps=1000/timeline.fps;
-        let frame=Math.floor(ms/invfps);
+        let frame=0;
+        if(timeline.playing) frame=Math.floor(ms/invfps);
+        let loop=timeline.dom.getAttribute("loop");
         switch(timeline.playback)
         {
+          case "mouseover":
+            if(loop=="true")
+            {
+              frame=frame%timeline.f.length;
+            }
+          break;
           case "pingpong":
             frame=frame%(timeline.f.length*2-2);
             if(frame>timeline.f.length-1)
@@ -59,16 +89,10 @@ if(typeof(ASVG)=="undefined")
               frame=(timeline.f.length*2-frame-2)%timeline.f.length;
             }
           break;
-          
           case "forward":
-            let loop=timeline.dom.getAttribute("loop");
             if(loop=="true")
             {
               frame=frame%timeline.f.length;
-            }
-            else
-            {
-              if(frame>timeline.f.length-1) frame=timeline.f.length-1;
             }
           break;
           
@@ -76,11 +100,30 @@ if(typeof(ASVG)=="undefined")
             frame=frame%timeline.f.length;
         }
 //        timeline.dom.setAttribute("currentFrame",frame);
+        if(frame<0) frame=0;
+        if(frame>timeline.f.length-1) frame=timeline.f.length-1;
         timeline.f[frame].style="";
         timeline.cf=frame; // all set for next one.
 //        console.log("current time: "+frame);
       }
-      window.requestAnimationFrame(this.animate.bind(this));
+      if(this.playing)
+        window.requestAnimationFrame(this.animate.bind(this));
+    },
+    mouseEvent: function (ev) {
+      if(ev.currentTarget.hasAttribute("timeline"))
+      {
+//        console.log("pointerover "+ ev.currentTarget.id+" -> timeline"+ev.currentTarget.getAttribute("timeline"));
+        switch(ev.type)
+        {
+          case "pointerover":
+            this.timelines[Number(ev.currentTarget.getAttribute("timeline"))].playing=true;
+          break;
+          case "pointerout":
+            this.timelines[Number(ev.currentTarget.getAttribute("timeline"))].playing=false;
+          break;
+        }
+      }
+      
     },
     stop: function () {
     }

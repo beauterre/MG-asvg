@@ -4,7 +4,8 @@ var data=[
   "pingpong playback",
   "multiple-timelines",
   "nested-timelines",
-  "multiple-svgs"
+  "multiple-svgs",
+  "animated-buttons"
   ];
 var menu=document.getElementById("menu");
 var header=document.createElement("div");
