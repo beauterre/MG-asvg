@@ -9,6 +9,10 @@ This way, I get people using it and I´ll find more issues and this will make my
 MG-ASVG.js is the script you have to include to play these kind of animations, anywhere on the page. 
 You can find it in the folder "js"
 
+## discussions
+If you have questions or a bug or anything, even if you are not a member of github, you can go here:
+[Discussions](https://github.com/HjalmarSnoep/MG-asvg/discussions/1)
+
 ## placing an ASVG on the HTML page
 It works the same as any SVG, so you can use normal layout techniques..
 It is a little bit different from using an image or animated gif, since an image is a bitmap
