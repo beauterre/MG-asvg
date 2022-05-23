@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+  <title>MG-ASVG player demo by Hjalmar Snoep</title>
+  <link rel="stylesheet" type="text/css" href="demo.css" media="all" />
+</head>
+<body>
+  <div class="container">
+  <div id="menu"></div>
+  <div id="demo">
+       SVG in HTML is just an inline-block..
+  		<svg viewBox="0 0 200 200" animated="true" width="200" height="200">
+  		  <rect x="0" y="0" width="1920" height="1080" fill="#eee"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=40 font-size="35">SVG 1</text>
+  		  <g class="asvg-timeline" fps="5" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="40"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  		One timeline at 5 fps...
+  		<svg viewBox="0 0 200 200" animated="true" width="200" height="200">
+  		  <rect x="0" y="0" width="1920" height="1080" fill="#eef"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=40 font-size="35">SVG 2</text>
+  		  <g class="asvg-timeline" fps="6" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="40"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  		One timeline at 6 fps...
+  		<svg viewBox="0 0 200 200" animated="true" width="200" height="200">
+  		  <rect x="0" y="0" width="1920" height="1080" fill="#fef"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=40 font-size="35">SVG 3</text>
+  		  <g class="asvg-timeline" fps="7" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="40"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  		One timeline at 7 fps...
+  		<svg viewBox="0 0 200 200" animated="true" width="200" height="200">
+  		  <rect x="0" y="0" width="1920" height="1080" fill="#efe"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=40 font-size="35">SVG 4</text>
+  		  <g class="asvg-timeline" fps="8" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="40"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  		One timeline at 8 fps...
+  		<svg viewBox="0 0 200 200" animated="true" width="200" height="200">
+  		  <rect x="0" y="0" width="1920" height="1080" fill="#ffe"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
+      	<text x=20 y=40 font-size="35">SVG 5</text>
+  		  <g class="asvg-timeline" fps="8" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="40"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  	</div>
+  	</div>
+  <script src="../js/MG-ASVG.js"></script>
+  <script src="demos.js"></script>
+</body>
+</html>
+
