@@ -1,5 +1,6 @@
 # MG-asvg
 Animated SVG timelines on any page with the Making Games - Animated SVG player. (MG-ASVG.js)
+I  made this, because I want to sell web-animation and nobody seems to have a good way of placing these in - for instance - wordpress.
 
 ## MG-asvg-player
 MG-ASVG.js is the script you have to include to play these kind of animations, anywhere on the page. 
