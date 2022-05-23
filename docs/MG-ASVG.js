@@ -9,7 +9,7 @@ if(typeof(ASVG)=="undefined")
     playing: true, // this allows the loop to stop
     start: function ()
     {
-      console.log("MG-ASVG v 2022-05-23-14-22")
+      console.log("MG-ASVG v 2022-05-23-17-41\nhttps://github.com/HjalmarSnoep/MG-asvg");
       this.playing=true;
       // analyse the document, find asvg´s
       this.timelines=[];
@@ -35,27 +35,12 @@ if(typeof(ASVG)=="undefined")
           let playback="looping";
           if(timeline[t].hasAttribute("playback"))
               playback=timeline[t].getAttribute("playback");
-          if(playback == "mouseover")
+          if(playback == "stop")
           {
-            // we need to add a listener to the target!
-            let target=timeline[t].getAttribute("target");
-            var target_dom=document.getElementById(target);
-            if(target_dom==null)
-            {
-              console.log("couldn`t find target: "+target);
-            }else
-            {
               playing=false;
-            }
+          }
             
-          }
           this.timelines.push({dom: timeline[t],f:fr,fps: fps,cf:0,ot: now, playback:playback, playing: playing});
-          if(target_dom!==null)
-          {
-              target_dom.addEventListener("pointerover",this.mouseEvent.bind(this));
-              target_dom.addEventListener("pointerout",this.mouseEvent.bind(this));
-              target_dom.setAttribute("timeline",this.timelines.length-1);
-          }
         }
       }
       console.log("ASVG- "+this.timelines.length+" timelines initiated");
@@ -107,25 +92,30 @@ if(typeof(ASVG)=="undefined")
 //        console.log("current time: "+frame);
       }
       if(this.playing)
-        window.requestAnimationFrame(this.animate.bind(this));
-    },
-    mouseEvent: function (ev) {
-      if(ev.currentTarget.hasAttribute("timeline"))
       {
-//        console.log("pointerover "+ ev.currentTarget.id+" -> timeline"+ev.currentTarget.getAttribute("timeline"));
-        switch(ev.type)
-        {
-          case "pointerover":
-            this.timelines[Number(ev.currentTarget.getAttribute("timeline"))].playing=true;
-          break;
-          case "pointerout":
-            this.timelines[Number(ev.currentTarget.getAttribute("timeline"))].playing=false;
-          break;
-        }
+        window.requestAnimationFrame(this.animate.bind(this));
       }
-      
     },
     stop: function () {
+      this.playing=false;
+    },
+    stopTimeline: function (id) {
+      for(let t=0;t<this.timelines.length;t++)
+      {
+        if(this.timelines[t].dom.id==id)
+        {
+          this.timelines[t].playing=false;
+        }
+      }
+    },
+    startTimeline: function (id) {
+      for(let t=0;t<this.timelines.length;t++)
+      {
+        if(this.timelines[t].dom.id==id)
+        {
+          this.timelines[t].playing=true;
+        }
+      }
     }
   };
   ASVG.start();

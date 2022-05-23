@@ -8,7 +8,7 @@
   <div class="container">
   <div id="menu"></div>
   <div id="demo">
-       <p> These buttons will animate on pointerover.</p>
+       <p> This is a demonstration of how to use javascript in conjunction with ASVG. These buttons will animate on pointerover.</p>
        
        
        <a href="" id="button1" style="display: inline-block;">
@@ -16,7 +16,7 @@
   		  <rect x="0" y="0" width="200" height="200" fill="#eee"></rect>
       	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
       	<text x=20 y=40 font-size="35">BUTTON 1</text>
-  		  <g class="asvg-timeline" playback="mouseover" loop="true" target="button1" fps="5" style="display: none;">
+  		  <g class="asvg-timeline" id="button1-timeline" playback="stop" loop="true" target="button1" fps="5" style="display: none;">
   		    <g>
   		      <circle cx="100" cy="100" r="20"></circle>
   		    </g>
@@ -35,25 +35,83 @@
   		  <rect x="0" y="0" width="200" height="200" fill="#fee"></rect>
       	<circle cx="960" cy="540" r="512" fill="#0ff"></circle>
       	<text x=20 y=40 font-size="35">BUTTON 2</text>
-  		  <g class="asvg-timeline" playback="mouseover" loop="true" target="button2" fps="20" style="display: none;">
+  		  <g class="asvg-timeline" id="button2-timeline" playback="pingpong" loop="true" target="button2" fps="20" style="display: none;">
+  		    <g>
+  		      <circle cx="100" cy="100" r="10"></circle>
+  		    </g>
   		    <g>
   		      <circle cx="100" cy="100" r="20"></circle>
+  		    </g>
+  		    <g>
+  		      <circle cx="100" cy="100" r="30"></circle>
   		    </g>
   		    <g>
   		      <circle cx="100" cy="100" r="40"></circle>
   		    </g>
   		    <g>
-  		      <circle cx="100" cy="100" r="10"></circle>
+  		      <circle cx="100" cy="100" r="50"></circle>
   		    </g>
   		  </g>
   		</svg>
   		</a>
-  		
-  		
+  		<p> Due to this script:
+        <pre>
+          <code>
+document.getElementById("button1").addEventListener("mouseover",mouseOver);
+document.getElementById("button1").addEventListener("mouseout",mouseOut);
+document.getElementById("button2").addEventListener("mouseover",mouseOver);
+document.getElementById("button2").addEventListener("mouseout",mouseOut);
+function mouseOver(ev)
+{
+ if(ev.currentTarget.id=="button1")
+ {
+    ASVG.startTimeline("button1-timeline");
+ }
+ if(ev.currentTarget.id=="button2")
+ {
+    ASVG.startTimeline("button2-timeline");
+ }
+}
+function mouseOut(ev)
+{
+ ASVG.stopTimeline("button1-timeline");
+ ASVG.stopTimeline("button2-timeline");
+}
+ASVG.stopTimeline("button1-timeline");
+ASVG.stopTimeline("button2-timeline");
+        
+          </code>
+        </pre>
+       </p>
   	</div>
   	</div>
   <script src="MG-ASVG.js"></script>
   <script src="demos.js"></script>
+  	<script>
+  	  document.getElementById("button1").addEventListener("mouseover",mouseOver);
+  	  document.getElementById("button1").addEventListener("mouseout",mouseOut);
+  	  document.getElementById("button2").addEventListener("mouseover",mouseOver);
+  	  document.getElementById("button2").addEventListener("mouseout",mouseOut);
+  	  function mouseOver(ev)
+  	  {
+  	    if(ev.currentTarget.id=="button1")
+  	    {
+            ASVG.startTimeline("button1-timeline");
+  	    }
+  	    if(ev.currentTarget.id=="button2")
+  	    {
+            ASVG.startTimeline("button2-timeline");
+  	    }
+  	  }
+  	  function mouseOut(ev)
+  	  {
+    	  ASVG.stopTimeline("button1-timeline");
+    	  ASVG.stopTimeline("button2-timeline");
+  	  
+  	  }
+  	  ASVG.stopTimeline("button1-timeline");
+  	  ASVG.stopTimeline("button2-timeline");
+  	</script>
 </body>
 </html>
 

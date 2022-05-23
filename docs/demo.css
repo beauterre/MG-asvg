@@ -6,12 +6,17 @@
 .container{
   position: relative;
 }
+pre{
+ padding: 15px;
+ background: #eee;
+}
 #demo{
   width: calc(100% - 150px);
   height: calc(100% - 60px);
   position: absolute;
   top: 60px;
   left: 150px;
+  overflow: scroll;
 }
 #header
 {
