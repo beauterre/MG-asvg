@@ -79,4 +79,4 @@ If ecmascript 6 is supported it will run the animation.
 So everywhere but on opera mini (https://caniuse.com/?search=es6)
 
 ## any other issues?
-I will open issues shortly.
+I will open issues shortly. I am working on it, for now, just fork and follow or download and check back.
