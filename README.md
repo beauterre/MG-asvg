@@ -14,8 +14,13 @@ The SVG will stretch according to the preserveAspectRatio attribute.
 (kind of like using "cover", but with more possibilities)
 
 ## How to make an ASVG
-Right now it´s just text based.. Make an SVG, set a group to class "timeline" and groups within that
-group will be displayed in order.
+Right now it´s just text based.. 
+- make an SVG, 
+- add an attribute "animated"
+- set a group to class "timeline" and groups within that
+
+groups in the timeline group will be displayed in order.
+
 For example:
 
 ```
@@ -56,7 +61,7 @@ For example:
   </g>
  </svg>
 ```
-If you ad the MG-ASVG.js script to this, you will see an animated ball.
+If you add the MG-ASVG.js script to this, you will see an animated ball.
 Interestingly a SVG can actually contain a script element itself, so you could also make a animation that plays without a page!
 Other examples can be found in "demo".
 
