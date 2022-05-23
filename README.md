@@ -9,6 +9,9 @@ This way, I get people using it and I´ll find more issues and this will make my
 MG-ASVG.js is the script you have to include to play these kind of animations, anywhere on the page. 
 You can find it in the folder "js"
 
+## demos
+Simple demo´s https://hjalmarsnoep.github.io/MG-asvg/ (I´ll make something fun later)
+
 ## discussions
 If you have questions or a bug or anything, even if you are not a member of github, you can go here:
 [Discussions](https://github.com/HjalmarSnoep/MG-asvg/discussions/1)
