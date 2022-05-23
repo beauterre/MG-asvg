@@ -1,8 +1,8 @@
 # MG-asvg
-Animated SVG timelines on any page.
+Animated SVG timelines on any page with the Making Games - Animated SVG player. (MG-ASVG.js)
 
 ## MG-asvg-player
-MGASVG.js is the script you have to include to play these kind of animations, anywhere on the page. 
+MG-ASVG.js is the script you have to include to play these kind of animations, anywhere on the page. 
 You can find it in the folder "js"
 
 ## placing an ASVG on the HTML page
@@ -58,9 +58,11 @@ For example:
 ```
 If you ad the MG-ASVG.js script to this, you will see an animated ball.
 Interestingly a SVG can actually contain a script element itself, so you could also make a animation that plays without a page!
+Other examples can be found in "demo".
 
 ## future
 An animation editor is something I am considering now. It would easy the use of SVG instances and library control. You could do actual drawing in any SVG editor and import the normal SVG to make an ASVG.
+I could host it in the github docs :)
 
 ## fallback
 A ASVG is a normal SVG, but all frames will be displayed at once. To prevent this, set a style="display: none" to the timeline and create a underlying preview, to show the preview in places that don´t support javascript.
