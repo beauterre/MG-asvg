@@ -69,5 +69,14 @@ Other examples can be found in "demo".
 An animation editor is something I am considering now. It would easy the use of SVG instances and library control. You could do actual drawing in any SVG editor and import the normal SVG to make an ASVG.
 I could host it in the github docs :)
 
-## fallback
-A ASVG is a normal SVG, but all frames will be displayed at once. To prevent this, set a style="display: none" to the timeline and create a underlying preview, to show the preview in places that don´t support javascript.
+## fallback and crossbrowser support
+A ASVG is a normal SVG, which is supported accross the board (https://caniuse.com/svg), 
+but all frames will be displayed at once. 
+To prevent this, set a style="display: none" to the timeline and create a underlying preview, 
+to show the preview in places that don´t support javascript.
+
+If ecmascript 6 is supported it will run the animation.
+So everywhere but on opera mini (https://caniuse.com/?search=es6)
+
+## any other issues?
+I will open issues shortly.
