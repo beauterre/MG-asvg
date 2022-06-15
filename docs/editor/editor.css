@@ -1,0 +1,250 @@
+.container,html,body{
+ padding: 0;
+ margin: 0;
+ height: 100%;
+}
+#container{
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  display: grid;
+  grid-template-columns: 30px auto  26px ;
+  grid-template-rows: 30px 26px 60px 26px auto 26px;
+  grid-template-areas:
+    'menu menu menu'
+    'toolbar topbar props'
+    'toolbar timeline props'
+    'toolbar midbar props'
+    'toolbar view props'
+    'footer footer footer';
+}
+#menu{
+  grid-area: menu;
+  background-color: #aaa;
+}
+#menu button
+{
+  height: 30px;
+  vertical-align: top;
+  overflow: hidden;
+}
+#midbar{
+  padding-left: 15px;
+  grid-area: midbar;
+  background-color: #aaa;
+}
+#footer{
+  grid-area: footer;
+  background-color: #333;
+  color: #999;
+}
+#toolbar{
+  width: 30px;
+  grid-area: toolbar;
+  border-right: 1px solid #888;
+  overflow: hidden;
+  background-color: #ddd;
+}
+.tool{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  border:1px solid #eee;
+  background-color: #eee;
+  border-radius: 2px;
+  user-select:none;
+  cursor: pointer;
+}
+.tool:hover
+{
+  border: 1px solid #000;
+  background-color: #ddd;
+
+}
+.active
+{
+ border: 1px solid #000;
+  background-color: #ccc;
+}
+.front-color{
+  display: inline-block;
+  width: 20px;
+  vertical-align: middle;
+  height: 20px;
+  background-color: #000;
+}
+.back-color{
+  position: absolute;
+  top:60px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  border:1px solid #000;
+  background-color: #fff;
+}
+#toolprops{
+  box-sizing: border-box;
+  padding: 3px 15px;
+  border-radius: 15px;
+ display: inline-block;
+ vertical-align: top;
+ background: rgba(255,255,255,0.5);
+}
+#brush-example{
+  display: inline-block;
+  background-color: #000;
+  border-radius: 200px;
+  width: 10px;
+  height: 10px;
+}
+#timeline-pane{
+  margin-left: 2px;
+  grid-area: timeline;
+  background-color: #ddd;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+#timeline-controls{
+  grid-area: topbar;
+  padding-left: 5px;
+  background-color: #ccc;
+}
+#timeline{
+  padding-left: 5px;
+}
+.layername input
+{
+  width: 120px;
+  background-color: #fff;
+}
+
+.layername{
+  position: relative;
+  position: fixed;
+  vertical-align: top;
+  font-size: 12px;
+  height:25px;
+  display: inline-block;
+  width: 200px;
+  background-color: #fff;
+  border: 1px solid;
+  overflow: hidden;
+}
+.layer-controls
+{
+  display: inline-block;
+  right: 0px;
+}
+.layer-control{
+ width: 24px;
+ vertical-align: top;
+ padding: 0px;
+ height: 24px;
+}
+#timeline-track{
+  position: relative;
+  display: inline-block;
+  height:25px;
+  background-color: #eee;
+  border: 1px solid #444;
+}
+#framenr{
+  width: 50px;
+}
+#playhead{
+  position: absolute;
+  top: -11px;
+  left: -3px;
+  color: #000;
+}
+.frame{
+  box-sizing: border-box;
+  vertical-align: top;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
+  padding:0px;
+  font-size: 6px;
+  user-select: none;
+  margin:0px;
+  width: 13px;
+  height:25px;
+  background-color: #f00;
+  border: 1px solid #999;
+}
+#timeline-numbers{
+  position: relative;
+  height: 20px;
+}
+.nr{
+  box-sizing: border-box;
+  vertical-align: top;
+  display: inline-block;
+  overflow: show;
+  padding:0px;
+  font-size: 6px;
+  user-select: none;
+  margin:0px;
+  width: 13px;
+  height:25px;
+  background-color: transparent;
+  border: 1px solid #bbb;
+}
+.k{
+  background-color: #fff;
+  vertical-align: top;
+  height: 20px;
+}
+.frame:hover, .nr:hover{
+  border: 6px solid rgba(0,0,0,0.5);
+}
+.key
+{
+  background-color: #800;
+  color: #f88;
+}
+.tween
+{
+  background-color: #8f8;
+  color: #080;
+}
+.selected
+{
+  border: 6px solid rgba(0,0,255,0.5);
+}
+.empty
+{
+  background-color: #eee;
+  color: #888;
+  border: 1px solid #ccc;
+}
+
+#props{
+  padding-left: 5px;
+  grid-area: props;
+  border-left: 2px solid #888;
+  background-color: #ccc;
+  
+}
+#view{
+  margin-left: 2px;
+  grid-area: view;
+  background-color: #888;
+  overflow: scroll;
+  border: 3px solid #000;
+  box-sizing: border-box;
+  padding: 5px;
+
+}
+#view canvas
+{
+  width: 1920px;
+  height 1080px;
+  background-color: #fff;
+  cursor: crosshair;
+}
