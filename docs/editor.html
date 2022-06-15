@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <title>MG-ASVG Editor by Hjalmar Snoep</title>
+  <link rel="stylesheet" type="text/css" href="editor.css" media="all" />
+</head>
+<body>
+  <div id="container">
+    <div id="menu"> <button>🗋 new</button><button>📂 open</button><button>📂 save</button><button>⚙ props</button>
+        
+        <div id="toolprops">
+            brushsize:
+          <input type="color" value="#000000" class="front-color">
+            <input type="range"> 15px
+
+        </div>
+
+    </div>
+    <div id="toolbar">
+      <div class="tool" title="select">➚</div>
+<!--      <div class="tool">🖍️️️</div>
+      <div class="tool">🖋️️</di->
+      <div class="tool">🖊️</div>
+      <div class="tool">🚿</div>
+      <div class="tool">🧽</div>
+      <div class="tool">🪄</div>
+      <div class="tool">🪢</div>
+      <div class="tool">📿</div>
+      <div class="tool">🎥</div>
+      <div class="tool">↩</div>
+      <div class="tool">T</div>
+      <div class="tool" title="primitive-circle">⊙</div>
+      <div class="tool" title="add water">💧</div>
+-->
+      <div class="tool active" title="brush">🖌</div>
+      <div class="tool" title="eraser">🧼</div>
+      <div class="tool" title="bucket">🪣</div>
+      
+      
+      <div class="tool" title="pull">🧲</div>
+      <div class="tool" title="zoom">🔍</div>
+      
+
+      
+    </div>
+    <div id="timeline-controls">
+      <button>⏸️</button><button>▶️</button><button>🔁</button><input id="framenr" value="1" type="nr"><button>🧅 onion skin</button><button>⧠ outline view</button>
+    </div>
+    
+    <div id="timeline-pane">
+        <div id="timeline">
+            <div id="timeline-numbers">
+              <div id="playhead">▼</div>
+                <div class="nr k">1</div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr k">5</div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr k">10</div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr">15</div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr">20</div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr">25</div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr"></div><div class="nr">30</div>
+            </div>
+            <div id="timeline-track">
+                <div class="frame key"></div><div class="frame tween"></div><div class="frame tween">+</div><div class="frame tween"></div><div class="frame tween"></div><div class="frame tween"></div><div class="frame key"></div><div class="frame empty"></div><div class="frame empty"></div><div class="frame empty"></div><div class="frame empty"></div><div class="frame empty"></div><div class="frame empty"></div>
+            </div>
+        </div>
+    </div>
+    <div id="midbar">🗎 Untitled.ani -
+      </div>
+    <div id="view">
+      <canvas id="canvas"></canvas>
+      </div>
+    <div id="props">
+       «
+      </div>
+    <div id="footer">footer</div>
+  </div>
+  <script src="../MG-ASVG.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>
+
