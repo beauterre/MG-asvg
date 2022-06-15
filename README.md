@@ -26,7 +26,7 @@ The SVG will stretch according to the preserveAspectRatio attribute.
 
 ## How to make an ASVG
 Working on the editor in my free-time:
-https://hjalmarsnoep.github.io/MG-asvg/editor.html
+https://hjalmarsnoep.github.io/MG-asvg/editor/editor.html
 
 Right now it´s just text based.. 
 - make an SVG, 
