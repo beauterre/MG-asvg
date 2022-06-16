@@ -13,8 +13,85 @@ init();
 function init()
 {
   showTimeLine();
+  hookupModal();
+  hookupKeys(); // shortcuts!
   hookupCanvas();
+  hookupMenu();
   hookupTools();
+  hookupPlayControls();
+}
+function hookupKeys()
+{
+  view.keymodifiers=[];
+  for(var i=0;i<20;i++) view.keymodifiers[i]=false;
+  document.addEventListener("keydown",handleKeys);
+  document.addEventListener("keyup",handleKeys);
+}
+function handleKeys(ev)
+{
+  var nr;
+  if(ev.type=="keydown")
+  {
+    switch(ev.keyCode)
+    {
+        case 16: // modifier
+        case 17: // modifier
+        case 18: // modifier
+          view.keymodifiers[ev.keyCode]=true;
+          ev.stopPropagation(); //ok, guys, consider it done.
+          ev.preventDefault(); // don´t do the normal space thing
+          ev.returnValue = false; // IE
+        break;
+        case 8: // backspace
+          ev.stopPropagation(); //ok, guys, consider it done.
+          ev.preventDefault(); // don´t do the normal space thing
+          ev.returnValue = false; // IE
+        break;
+        case 32: // space = play!
+          ev.stopPropagation(); //ok, guys, consider it done.
+          ev.preventDefault(); // don´t do the normal space thing
+          ev.returnValue = false; // IE
+        break;
+        case 37: // arrow-key
+        case 38: // arrow-key
+        case 39: // arrow-key
+        case 40: // arrow-key
+          ev.stopPropagation(); //ok, guys, consider it done.
+          ev.preventDefault(); // don´t do the normal space thing
+          ev.returnValue = false; // IE
+        break;
+        case 190:
+          nr=data.currentframe+1;
+          setCurrentFrame(nr);
+          ev.stopPropagation(); // don´t do the normal space thing.
+        break;
+        case 188:
+          nr=data.currentframe-1;
+          if(nr<0) nr=0;
+          setCurrentFrame(nr);
+          ev.stopPropagation(); // don´t do the normal space thing.
+        break;
+      default:
+        console.log("keyCode: "+ev.keyCode);
+    }
+  }else
+  {
+    // turn off modifiers.
+        view.keymodifiers[ev.keyCode]=false;
+        ev.stopPropagation(); //ok, guys, consider it done.
+        ev.preventDefault(); // don´t do the normal space thing
+        ev.returnValue = false; // IE
+  }
+}
+function hookupModal()
+{
+    document.getElementById("modal-close").addEventListener("click",closeModal);
+    document.getElementById("NO-DONATION").addEventListener("click",closeModal);
+    
+}
+function closeModal()
+{
+    document.getElementById("modal").style.display="none";
 }
 function hookupCanvas()
 {
@@ -37,6 +114,104 @@ function canvasPointer(ev)
   var y=ev.clientY-rect.y-view.margin;
   document.getElementById("footer").innerHTML=Math.floor(x)+","+Math.floor(y);
 }
+function hookupPlayControls()
+{
+  var tools=document.getElementById("timeline-controls");
+  view.timeline_controls=tools.getElementsByTagName("button");
+  for(var i=0;i<view.timeline_controls.length;i++)
+  {
+    view.timeline_controls[i].setAttribute("nr",i);
+    view.timeline_controls[i].addEventListener("click",clickTimelineControl);
+  }
+  document.getElementById("framenr").addEventListener("change",gatherInput);
+  document.getElementById("onion-start").addEventListener("change",gatherInput);
+  document.getElementById("onion-end").addEventListener("change",gatherInput);
+
+}
+function hookupMenu()
+{
+  var tools=document.getElementById("menu");
+  view.menu_buttons=tools.getElementsByTagName("button");
+  for(var i=0;i<view.menu_buttons.length;i++)
+  {
+    view.menu_buttons[i].setAttribute("nr",i);
+    view.menu_buttons[i].addEventListener("click",clickMenuButton);
+  }
+}
+function clickMenuButton(ev)
+{
+  switch(ev.currentTarget.id)
+  {
+    case "new":
+    case "props":
+      document.getElementById("modal").style.display="block";
+    break;
+    case "open":
+      document.getElementById("input_file").click();
+      break;
+    default:
+    console.log("menu button: "+ev.currentTarget.id);
+  }
+  
+}
+function gatherInput(ev)
+{
+  switch(ev.currentTarget.id)
+  {
+    case "framenr":
+//      console.log("set framenr to: "+Number(ev.currentTarget.value));
+      setCurrentFrame(Number(ev.currentTarget.value));
+    break;
+    default:
+     console.log("gather input: "+ev.currentTarget.id+ "has not been defined");
+  }
+}
+function clickTimelineControl(ev)
+{
+  // pop playbutton.
+  view.timeline_controls[1].className="";
+
+  switch(ev.currentTarget.title)
+  {
+    case "play":
+      ev.currentTarget.className="depressed";
+    break;
+    case "pause":
+    break;
+    case "loop":
+      if(ev.currentTarget.getAttribute("active")=="true")
+      {
+          ev.currentTarget.setAttribute("active","false");
+          ev.currentTarget.className="";
+      }else
+      {
+          ev.currentTarget.className="depressed";
+          ev.currentTarget.setAttribute("active","true");
+      }
+    break;
+    case "onion skin":
+      if(ev.currentTarget.getAttribute("active")=="true")
+      {
+          ev.currentTarget.setAttribute("active","false");
+          ev.currentTarget.className="";
+      }else
+      {
+          ev.currentTarget.className="depressed";
+          ev.currentTarget.setAttribute("active","true");
+      }
+    break;
+    case "view outline":
+    case "view opaque":
+    case "view rendered":
+          document.getElementById("view-outline").className="";
+          document.getElementById("view-opaque").className="";
+          document.getElementById("view-rendered").className="";
+          ev.currentTarget.className="depressed";
+    break;
+  }
+
+}
+
 function hookupTools()
 {
   var tools=document.getElementById("toolbar");
@@ -141,6 +316,15 @@ function showTimeLine()
   playhead.innerHTML="▼";
   numbers.appendChild(playhead);
 }
+function setCurrentFrame(nr)
+{
+  console.log("setCurrentFrame"+nr);
+  data.currentframe=nr;
+  var playhead=document.getElementById("playhead");
+  playhead.style.left=13*data.currentframe+"px";
+  var framenr=document.getElementById("framenr");
+  framenr.value=nr;
+}
 
 
 function timelinePointer(ev)
@@ -166,6 +350,7 @@ function timelinePointer(ev)
         if(view.timeline_select.end==view.timeline_select.start)
         {
           // you clicked a frame!
+          setCurrentFrame(nr);
         }
       }
       view.timeline_select.interrupt=setTimeout(showTimeLine,60);
