@@ -87,7 +87,8 @@ function analyze()
 	for(var i=0;i<defs.children.length;i++)
 	{
 		var elem=document.getElementById(defs.children[i].id);		
-		data.lib[defs.children[i].id]=elem.outerHTML.split("\n");
+		data.lib[defs.children[i].id]=[elem.outerHTML];
+//		data.lib[defs.children[i].id]=elem.outerHTML.split("\n");
 //		console.log(elem.outerHTML);
 //		console.log(data.lib[defs.children[i].id]);
 	}
@@ -97,7 +98,8 @@ function analyze()
 	{
 		if(svg.children[i].tagName!="defs")
 		{
-			frame.push(svg.children[i].outerHTML.split("\n"));
+			frame.push([svg.children[i].outerHTML]);
+//			frame.push(svg.children[i].outerHTML.split("\n"));
 			//console.log(svg.children[i]);
 		}
 	}
@@ -121,14 +123,14 @@ function analyze()
 		code.innerHTML=str;
 		
 		var svg="";
-		svg+='<svg width="'+data.files[0].svg.width+'" height="'+data.files[0].svg.height+'" viewBox="'+data.files[0].svg.viewbox+'">\n';
+		svg+='<svg animate="true" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="'+data.files[0].svg.width+'" height="'+data.files[0].svg.height+'" viewBox="'+data.files[0].svg.viewbox+'">\n';
 		svg+='<defs>\n';
 		for(var all in data.lib)
 		{
 			svg+=data.lib[all]+"\n";
 		}
 		svg+='</defs>\n';
-		svg+='<g class="timeline">\n';
+		svg+='<g class="asvg-timeline" playback="forward" loop="false" fps="25" id="timeline1" style="display: none;">\n';
 		for(var f=0;f<data.frames.length;f++)
 		{
 			svg+='<g id="'+data.basename+"_"+f+'">\n';
