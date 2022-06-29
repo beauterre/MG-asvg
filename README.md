@@ -28,7 +28,9 @@ The SVG will stretch according to the preserveAspectRatio attribute.
 
 ### convert Animate
 I am now working on a quick tool to convert Animate files to this format.
+You can just drag the exported SVG's into the dropbox.
 https://hjalmarsnoep.github.io/MG-asvg/converter/animate/convert_from_animate_svg_export.html
+
 An example of how to use the result is here:
 https://hjalmarsnoep.github.io/MG-asvg/converter.html
 
