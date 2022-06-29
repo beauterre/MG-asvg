@@ -38,10 +38,10 @@ https://hjalmarsnoep.github.io/MG-asvg/converter.html
 Working on the editor in my free-time:
 https://hjalmarsnoep.github.io/MG-asvg/editor/editor.html
 
-Right now it´s just text based.. 
-- make an SVG, 
+### USE A TEXT EDITOR
+- make or open an SVG, 
 - add an attribute "animated"
-- set a group to class "timeline" and groups within that
+- set a group to class "timeline" and groups within that svg
 
 groups in the timeline group will be displayed in order.
 
