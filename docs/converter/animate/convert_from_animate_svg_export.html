@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<title> Animate converter </title>
+<style>
+#dropzone {
+    background-color: #EEE;
+    border: #999 5px dashed;
+	position: absolute;
+	top:80px;
+	bottom: 15px;
+	left: 15px;
+	right: 15px;
+    width: calc(100%-30px);
+    height: calc(100%-30px);
+    font-size: 18px;
+}
+h2{
+text-align: center;
+}
+#drag_upload_file {
+  width:50%;
+  margin:0 auto;
+}
+#drag_upload_file p {
+  text-align: center;
+}
+#drag_upload_file #selectfile {
+  display: none;
+}
+#frames img{
+	max-width: 30px;
+	max-height: 30px;
+	background: #000;
+	image-fit: fit;
+}
+</style>
+</head>
+<body>
+<h1>Animate SVG converter</h1>
+<div id="dropzone"">
+    <div id="drag_upload_file">
+        <h2>Drop file(s) here</h2>
+        <p>Files should be numbered (example anim0001.svg, anim0001.svg)</p>
+        <p>Library names should be consistent.</p>
+    </div>
+	<script src="converter.js"></script>
+</div>
+<div id="frames"></div>
+<div id="feedback"></div>
+<pre><code id="data">
+</code></pre>
+</body>
+</html>
