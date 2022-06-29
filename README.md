@@ -26,13 +26,18 @@ The SVG will stretch according to the preserveAspectRatio attribute.
 
 ## How to make an ASVG
 
-### convert Animate
+### convert from adobe Animate
 I am now working on a quick tool to convert Animate files to this format.
 You can just drag the exported SVG's into the dropbox.
 https://hjalmarsnoep.github.io/MG-asvg/converter/animate/convert_from_animate_svg_export.html
 
 An example of how to use the result is here:
 https://hjalmarsnoep.github.io/MG-asvg/converter.html
+
+It's not working perfectly yet, somehow morphs aren't getting through and I feel there is more optimization to get.
+Right now ASVG is 25% of just the exported SVG's at 132 frames. More frames with the same library will result in a
+higher compression.
+Other things I could do to compress=repeat frames that are still. Create and use custom morphic and tweening options in ASVG.js
 
 ### EDITOR
 The editor is NOT finished yet... Working on the editor in my free-time:
