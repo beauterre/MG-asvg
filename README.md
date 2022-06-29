@@ -111,7 +111,7 @@ I could host it in the github docs :)
 A ASVG is a normal SVG, which is supported accross the board (https://caniuse.com/svg), 
 but all frames will be displayed at once. 
 To prevent this, set a style="display: none" to the timeline and create a underlying preview, 
-to show the preview in places that don´t support javascript.
+to show the preview during loading of long animations or in places that don´t support javascript.
 
 If ecmascript 6 is supported it will run the animation.
 So everywhere but on opera mini (https://caniuse.com/?search=es6)
