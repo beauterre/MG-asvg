@@ -20,8 +20,9 @@ if(typeof(ASVG)=="undefined")
         for(let t=0;t<timeline.length;t++)
         {
           // now initiate all frames in this timeline.
-          let fr=timeline[t].getElementsByTagName("g");
+          let fr=timeline[t].children;
           let f=0;
+		  console.log("timeline"+t+"found "+fr.length+" frames");
           for(f=0;f<fr.length;f++)
           {
             fr[f].style="display: none";
