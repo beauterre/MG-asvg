@@ -40,8 +40,11 @@ higher compression.
 Other things I could do to compress=repeat frames that are still. Create and use custom morphic and tweening options in ASVG.js
 
 ### EDITOR
+I understand that having a serious, free editor is going to make this format. However that's quite a tall order.
+But I think I am up for it.
 The editor is NOT finished yet... Working on the editor in my free-time:
 https://hjalmarsnoep.github.io/MG-asvg/editor/editor.html
+if you want to speed the process along, feel free to donate me money, this will push me with my nose in the laptop for a few hours out of sheer guilt for getting money..
 
 ### USE A TEXT EDITOR
 - make or open an SVG, 
