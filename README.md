@@ -5,6 +5,11 @@ you want to start and stop your animation with javascript.
 So I thought, why not make a general solution and give it away for free on github. 
 This way, I get people using it and I´ll find more issues and this will make my product more stable.
 It seemed (and still seems) rather straight forward what has to happen, it's just a load of work.
+I just can't believe that SVG has been around for two decades at least and it has been a decade since we couldn't use flash anymore.. So
+how come nobody fixed this in a decade using all this free stuff floating around and supported by EVERY browser?
+
+Sometimes... I just don't get what we are doing. Making money is fun and all, but some things just need to get done. Money or no.
+For the good of life all throughout the universe.
 
 ## MG-asvg-player
 MG-ASVG.js is the script you have to include to play these kind of animations, anywhere on the page. 
