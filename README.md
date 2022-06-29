@@ -35,7 +35,7 @@ An example of how to use the result is here:
 https://hjalmarsnoep.github.io/MG-asvg/converter.html
 
 ### EDITOR
-Working on the editor in my free-time:
+The editor is NOT finished yet... Working on the editor in my free-time:
 https://hjalmarsnoep.github.io/MG-asvg/editor/editor.html
 
 ### USE A TEXT EDITOR
