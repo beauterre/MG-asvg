@@ -7,24 +7,43 @@ dropZone.addEventListener('dragover', function(e) {
     e.dataTransfer.dropEffect = 'copy';
 });
 var interval=-1;
-
+function sortByName(a,b)
+{
+	if(a.name<b.name) return -1;
+	return 1;
+}
 // Get file data on drop
 dropZone.addEventListener('drop', function(e) {
     e.stopPropagation();
     e.preventDefault();
     var files = e.dataTransfer.files; // Array of all files
 
+	var sorted_files=[];
+	for (var i=0, file; file=files[i]; i++) 
+	{
+		var o={};
+		o.name=file.name;
+		o.index=i;
+		sorted_files.push(o);
+	}
+	sorted_files.sort(sortByName);
+	//console.log(sorted_files);
+	
 	// get the basename
-	var file=files[0];
+	var file=files[sorted_files[0].index];
 	for(var i=file.name.length-5;i>=0;i--)
 	{
 		var code=file.name.charCodeAt(i);
 		console.log(code);
 		if(code<48 || code>58) break;		
 	}
-	data.basename=files[0].name.substring(0,i+1);
-    for (var i=0, file; file=files[i]; i++) 
+	
+
+	
+	data.basename=files[sorted_files[0].index].name.substring(0,i+1);
+    for (var i=0;i<sorted_files.length; i++) 
 	{
+		var file=files[sorted_files[i].index];
 		var nr=Number(file.name.substring(data.basename.length,file.name.length-4));
 		console.log(file);
 		var reader = new FileReader();
@@ -130,7 +149,7 @@ function analyze()
 			svg+=data.lib[all]+"\n";
 		}
 		svg+='</defs>\n';
-		svg+='<g class="asvg-timeline" playback="forward" loop="false" fps="25" id="timeline1" style="display: none;">\n';
+		svg+='<g class="asvg-timeline" playback="forward" loop="true" fps="25" id="timeline1" style="display: none;">\n';
 		for(var f=0;f<data.frames.length;f++)
 		{
 			svg+='<g id="'+data.basename+"_"+f+'">\n';
@@ -152,6 +171,30 @@ function analyze()
 		
 		svg=svg.split("<").join("&lt;");
 		code.innerHTML=svg;
+		
+		var newSVG=document.createElementNS("http://www.w3.org/2000/svg","svg");
+		svg=svg.split("&lt;").join("<");
+		var defs_pos=svg.indexOf("<defs>");
+		var svg_pos=svg.indexOf("</svg>");
+		console.log(defs_pos,svg_pos);
+		var strippedsvg=svg.substr(defs_pos,svg_pos);
+		console.log("stripped SVG innards:"+strippedsvg)
+		newSVG.setAttribute("width",data.files[0].svg.width);
+		newSVG.setAttribute("height",data.files[0].svg.height);
+		newSVG.setAttribute("viewBox",data.files[0].svg.viewbox);
+		newSVG.setAttribute("animate","true");
+		newSVG.setAttribute("xmlns","http://www.w3.org/2000/svg");
+		newSVG.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink");
+		newSVG.setAttribute("version","1.1");
+		newSVG.setAttribute("preserveAspectRatio","none");
+		newSVG.setAttribute("x","0px");
+		newSVG.setAttribute("y","0px");
+		newSVG.innerHTML=strippedsvg;
+		document.getElementById("result").appendChild(newSVG);
+		var script=document.createElement("script");
+		script.src="../../MG-ASVG.js";
+		script.type = 'text/javascript';
+		document.body.appendChild(script);
 		
 	}
 }
