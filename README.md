@@ -1,6 +1,9 @@
 # MG-asvg
 Animated SVG timelines on any page with the Making Games - Animated SVG player. (MG-ASVG.js)
 
+## demos
+Simple demo´s https://hjalmarsnoep.github.io/MG-asvg/ (I´ll make something fun later)
+
 ## why?
 ### SMIL is dead
 SMIL was the default animation tool for SVG, but due to lack of support, it´s pretty much dead.
@@ -35,9 +38,6 @@ After that we will support changing parameters on the fly, like playback speed.
 
 ## simple sound event support (I am nowhere near this yet :)
 The sound events I want to support first are beep-o-tron sounds. Later that might be extended to musical things and wavs and mp3s (converted from beep-o-tron on the fly or imported) and some basic effect-racks like reverb etc.
-
-## demos
-Simple demo´s https://hjalmarsnoep.github.io/MG-asvg/ (I´ll make something fun later)
 
 ## discussions
 If you have questions or a bug or anything, even if you are not a member of github, you can go here:
