@@ -1,5 +1,5 @@
-// the asvg pleyer automatically looks for any SVG´s with the attribute _ animated="true" _ on the page
-// this is setup to be called as an external script and works as a singleton instance module.
+// the asvg player automatically looks for any SVG´s with the attribute _ animated="true" _ on the page
+// this is set up to be called as an external script and works as a singleton instance module.
 // create by Hjalmar Snoep
 if(typeof(ASVG)=="undefined")
 {
