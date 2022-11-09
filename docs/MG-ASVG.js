@@ -7,6 +7,7 @@ if(typeof(ASVG)=="undefined")
   {
     ot: Date.now(), // offset time
     playing: true, // this allows the loop to stop
+    eventListener: null,
     start: function ()
     {
       console.log("MG-ASVG v 2022-05-23-17-41\nhttps://github.com/HjalmarSnoep/MG-asvg");
@@ -22,7 +23,7 @@ if(typeof(ASVG)=="undefined")
           // now initiate all frames in this timeline.
           let fr=timeline[t].children;
           let f=0;
-		  console.log("timeline"+t+"found "+fr.length+" frames");
+    		  console.log("timeline"+t+"found "+fr.length+" frames");
           for(f=0;f<fr.length;f++)
           {
             fr[f].style="display: none";
@@ -30,18 +31,26 @@ if(typeof(ASVG)=="undefined")
           timeline[t].style="";
           let fps=25;
           let now=Date.now();
-          let playing=true;
           if(timeline[t].hasAttribute("fps"))
               fps=Number(timeline[t].getAttribute("fps"));
           let playback="looping";
           if(timeline[t].hasAttribute("playback"))
               playback=timeline[t].getAttribute("playback");
-          if(playback == "stop")
-          {
-              playing=false;
-          }
+          if(timeline[t].hasAttribute("playback"))
+              playback=timeline[t].getAttribute("playback");
+
+          let playing=true;
+          if(timeline[t].hasAttribute("playing"))
+              playing=timeline[t].getAttribute("playing");
+          if(timeline[t].hasAttribute("playing"))
+              playing=timeline[t].getAttribute("playing");
+          
+
+          let frame=-1;
+          if(timeline[t].hasAttribute("frame"))
+              frame=timeline[t].getAttribute("frame");
             
-          this.timelines.push({dom: timeline[t],f:fr,fps: fps,cf:0,ot: now, playback:playback, playing: playing});
+          this.timelines.push({dom: timeline[t],f:fr,fps: fps,cf:frame,ot: now, playback:playback, playing: playing});
         }
       }
       console.log("ASVG- "+this.timelines.length+" timelines initiated");
@@ -54,12 +63,28 @@ if(typeof(ASVG)=="undefined")
       for(t=0;t<this.timelines.length;t++)
       {
         let timeline=this.timelines[t];
-        timeline.f[timeline.cf].style="display:none"; // remove the OLD frame
+        if(timeline.cf==-1)
+        {
+          timeline.cf=0;
+          // special case, we just started playing AND we skipped 0, but it has an event.
+          if(timeline.f[0].hasAttribute("event"))
+          {
+            if(ASVG.eventListener!==null)
+            {
+              ASVG.eventListener(timeline.f[0].getAttribute("event"));
+            }else
+            {
+                console.log("no event listener: "+timeline.f[0].getAttribute("event"));
+            }
+          }
+        }
+        timeline.f[timeline.cf].style="display: none"; // remove the OLD frame
         let ms=Date.now()-this.ot;
         let invfps=1000/timeline.fps;
         let frame=0;
         if(timeline.playing) frame=Math.floor(ms/invfps);
         let loop=timeline.dom.getAttribute("loop");
+        
         switch(timeline.playback)
         {
           case "mouseover":
@@ -88,8 +113,22 @@ if(typeof(ASVG)=="undefined")
 //        timeline.dom.setAttribute("currentFrame",frame);
         if(frame<0) frame=0;
         if(frame>timeline.f.length-1) frame=timeline.f.length-1;
-        timeline.f[frame].style="";
-        timeline.cf=frame; // all set for next one.
+        timeline.f[frame].style.display="";
+        if(timeline.cf!=frame)
+        {
+          timeline.cf=frame;
+          if(timeline.f[frame].hasAttribute("event"))
+          {
+            if(ASVG.eventListener!==null)
+            {
+              ASVG.eventListener(timeline.f[frame].getAttribute("event"));
+  
+            }else
+            {
+                console.log("no event listener: "+timeline.f[frame].getAttribute("event"));
+            }
+          }
+        }
 //        console.log("current time: "+frame);
       }
       if(this.playing)
@@ -106,6 +145,7 @@ if(typeof(ASVG)=="undefined")
         if(this.timelines[t].dom.id==id)
         {
           this.timelines[t].playing=false;
+          this.timelines[t].lastframe=-1; // make sure events at frame 0 fire!
         }
       }
     },

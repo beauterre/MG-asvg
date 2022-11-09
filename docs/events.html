@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <title>MG-ASVG player demo by Hjalmar Snoep</title>
+  <link rel="stylesheet" type="text/css" href="demo.css" media="all" />
+</head>
+<body>
+  <div class="container">
+  <div id="menu"></div>
+  <div id="demo" style="padding: 25px;">
+      <audio id="bob left" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//OIwAAAAAAAAAAAAEluZm8AAAAPAAAAAwAABIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA////////////////////////////////////////////AAAAAExhdmM1OC4xMwAAAAAAAAAAAAAAACQDQAAAAAAAAASA88iZsgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//OIxAA6GsacA1l4ASFyy5ZacsmYIJgglt0w2XvxHUBZjomzCctJ0ym6iLBo3oLve4C7GIO5Dl6A8VicQxQOCnJ2GoByApAHQASAAAAUBGFaIQJgjFOW8nZ1s+Fer2d/fDAchOBNxNxNxNxNxcyFoXIaZ1zsCGGghjJDQxQRMv1er0PNMnBOCcFwNBQMkTVNXfq9Xq+PIr2fbxWKxWKxWIeh6Hq9nf3velIDx48eU9NXfsavV79+8ePHjylKUve973ve9KUgPHjx5S94b9+/DwwAAAAADw8PDwwAAAAADw8PH///ADw8PDwwAAADwB3h4YAAAAAKIBAIRgMHGIxIqcYCD6xQwOsjCJRMKjQwEYlzWjsTBONmw53eAdp3ZfAw//OIxCpGi8acw5zQAFoAyEeGhRWHOGhshbWVL4CwkRQQN2RCVeYRaXi/KU1SXYeaCYWCZgkJFmkGTLKrmSIp86mautixYqBDGgjNCRpOF0UAyxI5sS3i6v/ll+kVgFHBREww16RoCu5pTls1ehQaFU3/rXf8CB1MepwlrgqGWfSSp0m+noy6N2Yi0Nfvf///6XzQ37g1qqYr8sSizJXytQ8+1LdnY9D0aq1s//Wv/////3SiDZHyeGNw1FqGZgl+325BOqarHn+mZbZxqyntLNa//////////ziNymfaBaekjkjiEpmYBpojWtymV2v/HmrU1S445Zd3y1jZlNUKHm5GcTI0aCTDXWNEJd4AJMEJAckqZz50XnU+LIGvkf/g//OIxCI2+nG0AdnAAbSmfEcqwkGZ0J0Tm0KOlG3ABqqPF4lNpFEXJcl+YBWFXTGFzKDNsyFFWH0vVNYYR6LxLWZihJadHXJh29WlUanpp2n+twy7s7EnKpGtO9TtZYi/MeZ1FZVGr9WM0vK0pjMZvSqNWqsZrwzDuENP9LqsM2qtnmWWW6uWWWX481lWlVN2rS2dU2Osu7x5+WOOP//7x3VsmhT8QX+Hf/ywgroKaKhDYp3v92LvCoRwKSGf34X//SYKwFY9FExBTUUzLjEwMKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"></audio>
+      <audio id="bob right" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//OIwAAAAAAAAAAAAEluZm8AAAAPAAAAAwAABIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA////////////////////////////////////////////AAAAAExhdmM1OC4xMwAAAAAAAAAAAAAAACQDQAAAAAAAAASA6o9CvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//OIxAA0Yp6gBVh4AQGRXRXRXQDoB0A6Rag7E12KAJEPagLM7zrc6xAVy+CpF2Ncdx2HIdyHH977xSlKP37PHbDkG4EcBUACsAjAOwb5L3JOMjeQQhB0KCJm99///L9Pk7E0E0HoHoIQTguCobzQOhklV6HoezyJ9Rs+8UePFYh6Hoeh5pmmdajj6/+b3w8Uavj4gPKZfqxWKx48YGR48V79/ff/vSlKUpTX/u/fv37+PEgPHkQAd8cPD/+AAAAeHh4f+AAACA8PD+hgAAAAjoeHh78AAAM//zDAAAAABQwQAAwDAoSMRiBurS4+paY1PBpAcmBiEYgAwVAxaozpDT1WcMHtc79SVkjoIMFdQaTGFBppS+aMXgoIaVC7I0BU//OIxEFLm76ZgZzYAeFxFNLss4AA3dyNZGEtgFCDYAs5kWMnQy5JjRiYeZAJSMII8bm+bCgOABFHprxgwWMkq7oBh1gMYCwTjz//wMLmEARgxeRBgKTTEwgYAG4uADQRdqDQQDMq3jrXd7IgshAG8LemFgzGVIppAUIcpyoi5LDWkur23////+/RbDAFkrhMxRCTivwxDK3ExYFUqfWHX1ptS6Go05Uq////////ZY5U8sK7MmjjtMrbk5rvQezyvnS1ajtXJdn9mVbx1j//////////LIFiWTrt1tQDQyKHpm5DrtQ5L78M16uFa1vGUy3H6s1bs4/V8aofq1dW0CAzDBwMJUoMegNOYKpQ28Q4KowYc10k6U02w8wbA5Mw//OIxCU1k63ABdp4ART0xqQ1aAIPBYSZQuZIOvQEggDkMEXFGm8LcQpyUpzHU5IkW0XFGk+DVJUvxclpOmihMBPK17XD59PBVt1arYuHz6Nu1rZYWWLh89r7Qo24L27Cy6hK59l7uta+1t/4tv+ta5excPn0aC9tWusWt8/////1+LW3V7utdYtb1///9rata3zX////NYu61rr2hRsPn26va4hV////9a1rX4t/mr2LSE+1CbFc8FN+CCgrgqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"></audio>
+      
+  		<div id="show-events">CLICK THIS TEXT TO ALLOW SOUNDS - </div>
+    		<svg viewBox="0 0 1920 1080" animated="true" width="1920" height="1080" style="width: 192px; height: 108px;">
+  		  <rect x="0" y="0" width="1920" height="1080" fill="#eee"></rect>
+      	<circle cx="960" cy="540" r="512" fill="#800"></circle>
+  		  <g class="asvg-timeline" playback="pingpong" playing="false" frame="0" fps="5" id="timeline1" style="display: none;">
+  		    <g event="bob left">
+      		  <circle cx="512" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="600" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="700" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="800" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="900" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="1000" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="1100" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="1200" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g>
+      		  <circle cx="1300" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		    <g event="bob right">
+      		  <circle cx="1400" cy="512" r="62" fill="#fff"></circle>
+  		    </g>
+  		  </g>
+  		</svg>
+  		<hr>IN THE SVG set Event as attribute to a frame (&lt;g> makes for frames inside a &lt;g class="asvg-timeline">):
+  		<code><pre>
+&lt;g class="asvg-timeline" playback="pingpong" playing="false" frame="0" fps="15" id="timeline1" style="display: none;">
+  &lt;g <strong>event="bob left"</strong>>
+    &lt;circle cx="512" cy="512" r="62" fill="#fff"></circle>
+  &lt;/g>
+  ....
+&lt;/g>
+  
+</pre>
+</code>
+  		<hr>IN THE JS you can pick up any event with a unique name (one of the things demonstrated here is synced sounds, but you need a user click to be able to do that):
+<code><pre>
+ASVG.eventListener=function(event)
+{
+  switch(event)
+  {
+    <strong>case "bob left":</strong>
+      // do something here..
+    break;
+    default:
+     console.log("don´t know what to do with event: "+event);
+  }
+};
+  	  </pre>
+  		</code>
+  	</div>
+  	</div>
+  <script src="MG-ASVG.js"></script>
+  	<script>
+  	  var soundsAllowed=false;
+  	  var show_events=document.getElementById("show-events");
+  	  show_events.addEventListener("click",allowSounds);
+  	  function allowSounds()
+  	  {
+  	    console.log("you clicked the text!");
+    	  show_events.removeEventListener("click",allowSounds);
+    	  soundsAllowed=true;
+    	  // play silence to cement this deal with the user..
+    	  var sound=document.getElementById("bob left");
+    	  sound.setAttribute("controls",true);
+    	  var sound=document.getElementById("bob right");
+    	  sound.setAttribute("controls",true);
+    	  sound.volume=0;
+    	   sound.play();
+  	  }
+  	  ASVG.eventListener=function(event)
+  	  {
+  	      if(soundsAllowed)
+  	      {
+  	        //play a sound.
+  	        document.getElementById(event).volume=0.2;
+  	        document.getElementById(event).play();
+      	    show_events.innerHTML=" ";
+  	      }else
+  	      {
+      	    show_events.innerHTML+=event+" ";
+  	      }
+  	  };
+  	  // now that we have set the event listener, we start the timeline, else we would miss the event on frame 0!
+  	  document.getElementById("timeline1").setAttribute("playback","pingpong");
+  	  ASVG.startTimeline("timeline1");
+  	  
+  	</script>
+  <script src="demos.js"></script>
+</body>
+</html>
+

@@ -6,7 +6,8 @@ var data=[
   "nested-timelines",
   "multiple-svgs",
   "animated-buttons",
-  "converter"
+  "converter animate",
+  "events",
   ];
 var menu=document.getElementById("menu");
 var header=document.createElement("div");
