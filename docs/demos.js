@@ -7,6 +7,7 @@ var data=[
   "multiple-svgs",
   "animated-buttons",
   "converter animate",
+  "svgator capture",
   "events",
   ];
 var menu=document.getElementById("menu");
