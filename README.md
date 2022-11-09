@@ -1,19 +1,37 @@
 # MG-asvg
 Animated SVG timelines on any page with the Making Games - Animated SVG player. (MG-ASVG.js)
-I  made this, because I want to sell web-animation and nobody seems to have a good way of placing these in - for instance - wordpress. Animated Gif has it´s drawbacks especially if you want to support multi-res displays like the Ipad or if
-you want to start and stop your animation with javascript.
-So I thought, why not make a general solution and give it away for free on github. 
-This way, I get people using it and I´ll find more issues and this will make my product more stable.
-It seemed (and still seems) rather straight forward what has to happen, it's just a load of work.
-I just can't believe that SVG has been around for two decades at least and it has been a decade since we couldn't use flash anymore.. So
-how come nobody fixed this in a decade using all this free stuff floating around and supported by EVERY browser?
 
-Sometimes... I just don't get what we are doing. Making money is fun and all, but some things just need to get done. Money or no.
-For the good of life all throughout the universe.
+## why?
+### SMIL is dead
+SMIL was the default animation tool for SVG, but due to lack of support, it´s pretty much dead.
+In this gap a plethora of tools popped up. Like Snap SVG, SVG js, raw, bonsai js, SVGator, Motion UI, MoJS, Vivus, Lazy Line Painter
+None of these do things the way I like it, geared towards my type of animation, which is advanced cut out using multiple embedded timelines.
+SVGator is quite powerful, but..   Even though the editor has most stuff you might want, it´s not really geared towards drawing  (like Flash)  and artistic expression (like inkscape or photoshop.) The js is embedded, which is kind of smart, but there is tons of stuff in an animator you might want to reuse that is duplicated then. Als embedded timelines are not possible. And although it has an observer-mode that easily allows for buttons, that actually makes it
+harder to program custom behaviour into buttons if you do know some javascript. But I think I will make a converter for that animation type, because it´s not bad. The only thing wrong with it, is that it´s not actually free, even though it claims to be. Mostly free, I´d say.
+
+### CSS Animations aren´t interactive
+Also.. we had css animations as an alternative to SMIL.. They basically have the same problems: clunky stuff, CSS animations get big, not really flexible and not widely supported. But most of all, both aren´t interactive, so you can´t really add sound or interaction.
+
+### APNG and Animated Gif
+Even though APNG is a great improvement over Animated Gif, they both have their drawbacks especially if you want to support multi-res displays like the Ipad. And even with tinypng supporting APNG, they tend to get as big as videos and they are AS hard to control, if not harder.
+
+### so what do I want with this thing?
+I want it all.. I want artistic expression and rendering to video AND interactivity AND sound.
+I started making this, because I wanted to sell web-animation and nobody seems to have a good way of placing these in - for instance - wordpress. 
+So I thought, why not make a general solution and give it away for free on github. 
+This way, I get people using it and I´ll find more issues and this will make my product more stable. You know.. the freeware concept.
+It seemed (and still seems) rather straight forward what has to happen, it's just a load of work.
 
 ## MG-asvg-player
 MG-ASVG.js is the script you have to include to play these kind of animations, anywhere on the page. 
 You can find it in the folder "js"
+
+## interactiviy support
+I want the MG-asvg object to support starting and stopping of timelines by ID, support events as a basic.
+After that we will support changing parameters on the fly, like playback speed.
+
+## simple sound event support (I am nowhere near this yet :)
+The sound events I want to support first are beep-o-tron sounds. Later that might be extended to musical things and wavs and mp3s (converted from beep-o-tron on the fly or imported) and some basic effect-racks like reverb etc.
 
 ## demos
 Simple demo´s https://hjalmarsnoep.github.io/MG-asvg/ (I´ll make something fun later)
@@ -23,12 +41,18 @@ If you have questions or a bug or anything, even if you are not a member of gith
 [Discussions](https://github.com/HjalmarSnoep/MG-asvg/discussions/1)
 
 ## placing an ASVG on the HTML page
-It works the same as any SVG, so you can use normal layout techniques..
+It works the same as any SVG, so you can use normal layout techniques.. 
 It is a little bit different from using an image or animated gif, since an image is a bitmap
 and SVG is vector (infinite resolution). You do not have to include different sources to get more resolutions.
 The best way is to style an SVG like you would any block-element.
 The SVG will stretch according to the preserveAspectRatio attribute.
 (kind of like using "cover", but with more possibilities)
+
+## backwards compatibility / fallback / noscript
+Some platforms/people may not support JS. That´s ok. Then you are just loading a unnecessarily big SVG.
+But it will display fine. You can even set a display that has NOTHING to do with your film, just to make it
+possibly to do a "unpacking" animation. So kind of like a loading animation, but just playing while the JS unpacks the animation (inbetweens) to something
+it can easily play in real time. (This will use more memory, ofcourse, that is the trade of)
 
 ## How to make an ASVG
 
