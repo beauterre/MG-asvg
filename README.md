@@ -19,7 +19,7 @@ Also.. we had css animations as an alternative to SMIL.. They basically have the
 Even though APNG is a great improvement over Animated Gif, they both have their drawbacks especially if you want to support multi-res displays like the Ipad. And even with tinypng supporting APNG, they tend to get as big as videos and they are AS hard to control, if not harder.
 
 ### Nothing supports sounds or events out of the box.
-Well, I don´t either, but I plan to..
+This does, look at the events demo.
 
 ### so what do I want with this thing?
 I want it all.. I want artistic expression and rendering to video AND interactivity AND sound.
