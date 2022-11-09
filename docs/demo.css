@@ -11,6 +11,7 @@ pre{
  background: #eee;
 }
 #demo{
+	background-image: url("show-transparent.png");
   width: calc(100% - 150px);
   height: calc(100% - 60px);
   position: absolute;
