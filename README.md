@@ -12,8 +12,11 @@ harder to program custom behaviour into buttons if you do know some javascript. 
 ### CSS Animations aren´t interactive
 Also.. we had css animations as an alternative to SMIL.. They basically have the same problems: clunky stuff, CSS animations get big, not really flexible and not widely supported. But most of all, both aren´t interactive, so you can´t really add sound or interaction.
 
-### APNG and Animated Gif
+### APNG and Animated Gif don´t scale
 Even though APNG is a great improvement over Animated Gif, they both have their drawbacks especially if you want to support multi-res displays like the Ipad. And even with tinypng supporting APNG, they tend to get as big as videos and they are AS hard to control, if not harder.
+
+### Nothing supports sounds or events out of the box.
+Well, I don´t either, but I plan to..
 
 ### so what do I want with this thing?
 I want it all.. I want artistic expression and rendering to video AND interactivity AND sound.
